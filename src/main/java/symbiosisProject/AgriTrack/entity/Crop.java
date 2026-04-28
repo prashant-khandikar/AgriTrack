@@ -44,5 +44,77 @@ public class Crop {
     @OneToMany(mappedBy = "crop" , cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Expense> expenses;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSeason() {
+		return season;
+	}
+
+	public void setSeason(String season) {
+		this.season = season;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public LocalDate getSowingDate() {
+		return sowingDate;
+	}
+
+	public void setSowingDate(LocalDate sowingDate) {
+		this.sowingDate = sowingDate;
+	}
+
+	public LocalDate getHarvestDate() {
+		return harvestDate;
+	}
+
+	public void setHarvestDate(LocalDate harvestDate) {
+		this.harvestDate = harvestDate;
+	}
+
+	public Farmer getFarmer() {
+		return farmer;
+	}
+
+	public void setFarmer(Farmer farmer) {
+		this.farmer = farmer;
+	}
+
+	public List<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
+	}
+
+	public List<Expense> getExpenses() {
+		return expenses;
+	}
+
+	public void setExpenses(List<Expense> expenses) {
+		this.expenses = expenses;
+	}
     
 }
