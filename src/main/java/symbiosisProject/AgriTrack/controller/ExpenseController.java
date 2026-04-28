@@ -10,41 +10,41 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import symbiosisProject.AgriTrack.entity.Crop;
-import symbiosisProject.AgriTrack.service.CropService;
+import symbiosisProject.AgriTrack.entity.Expense;
+import symbiosisProject.AgriTrack.service.ExpenseService;
 
 @RestController
-@RequestMapping("/crop")
-public class CropController {
-
+@RequestMapping("/expense")
+public class ExpenseController {
+ 
 	@Autowired
-	public CropService service;
+	public ExpenseService service;
 	
-	@PostMapping("/{id}")
-	public Crop postCrop(@RequestBody Crop c,@PathVariable Long id)
+	@PostMapping("/addExpense/{id}")
+	public Expense addActivity( @RequestBody Expense e, @PathVariable Long id)
 	{
-		return service.postCrop(c,id);
+		return service.addExpense(e, id);
 	}
 	
 	@GetMapping
-	public List<Crop> getAllCrop()
+	public List<Expense> getAllExpenses()
 	{
-		return service.getAllCrop();
+		return service.getAllExpenses();
 	}
 	
-	@GetMapping("id/{id}")
-	public Crop getById(@PathVariable Long id)
+	@GetMapping("/id/{id}")
+	public Expense getById(@PathVariable Long id)
 	{
 		return service.getById(id);
 	}
 	
-	@GetMapping("name/{name}")
-	public List<Crop> getByName(@PathVariable String name)
+	@GetMapping("/type/{type}")
+	public Expense getByName(@PathVariable String type)
 	{
-		return service.getByName(name);
+		return service.getByType(type);
 	}
 	
+
 	
 	@DeleteMapping("/{id}")
 	public String deleteById(@PathVariable Long id)

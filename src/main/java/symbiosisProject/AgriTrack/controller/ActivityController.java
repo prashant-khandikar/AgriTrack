@@ -11,40 +11,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import symbiosisProject.AgriTrack.entity.Crop;
-import symbiosisProject.AgriTrack.service.CropService;
+import symbiosisProject.AgriTrack.entity.Activity;
+import symbiosisProject.AgriTrack.service.ActivityService;
 
 @RestController
-@RequestMapping("/crop")
-public class CropController {
+@RequestMapping("/activity")
+public class ActivityController {
 
 	@Autowired
-	public CropService service;
+	public ActivityService service;
 	
-	@PostMapping("/{id}")
-	public Crop postCrop(@RequestBody Crop c,@PathVariable Long id)
+	@PostMapping("/addActivity/{id}")
+	public Activity addActivity(@RequestBody Activity a,@PathVariable Long id)
 	{
-		return service.postCrop(c,id);
+		return service.addActivity(a,id);
 	}
 	
 	@GetMapping
-	public List<Crop> getAllCrop()
+	public List<Activity> getAllActivities()
 	{
-		return service.getAllCrop();
+		return service.getAllActivities();
 	}
 	
-	@GetMapping("id/{id}")
-	public Crop getById(@PathVariable Long id)
+	@GetMapping("/id/{id}")
+	public Activity getById(@PathVariable Long id)
 	{
 		return service.getById(id);
 	}
 	
-	@GetMapping("name/{name}")
-	public List<Crop> getByName(@PathVariable String name)
+	@GetMapping("/type/{type}")
+	public Activity getByType(@PathVariable String type)
 	{
-		return service.getByName(name);
+		return service.getByType(type);
 	}
 	
+
 	
 	@DeleteMapping("/{id}")
 	public String deleteById(@PathVariable Long id)

@@ -6,44 +6,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import symbiosisProject.AgriTrack.entity.Crop;
-import symbiosisProject.AgriTrack.entity.Farmer;
+import symbiosisProject.AgriTrack.entity.Expense;
 import symbiosisProject.AgriTrack.repository.CropRepository;
-import symbiosisProject.AgriTrack.repository.FarmerRepository;
+import symbiosisProject.AgriTrack.repository.ExpenseRepository;
 
 @Service
-public class CropService {
- 
+public class ExpenseService {
+
 	@Autowired
-	public CropRepository repo;
+	public ExpenseRepository repo;
 	
 	@Autowired
-	public FarmerRepository frepo;
+	public CropRepository crepo;
 	
-	public Crop postCrop(Crop c,Long id)
+	public Expense addExpense(Expense e,Long id)
 	{
-		Farmer f = frepo.findById(id).orElse(null);
+		Crop c = crepo.findById(id).orElse(null);
 		
-			c.setFarmer(f);
+			e.setCrop(c);
 		
-		return repo.save(c);
+		return repo.save(e);
 	}
 	
-	public List<Crop> getAllCrop()
+	public List<Expense> getAllExpenses()
 	{
 		return repo.findAll();
 	}
 	
-	public Crop getById(Long id)
+	public Expense getById(Long id)
 	{
 		return repo.findById(id).orElse(null);
 	}
    
-	public List<Crop> getByName(String name)
+	public Expense getByType(String type)
 	{
-		return repo.findAllByName(name);
-		
+		return repo.getByType(type).orElse(null);
 	}
 	
+
 	public String delteById(Long id)
 	{
 	     repo.deleteById(id);

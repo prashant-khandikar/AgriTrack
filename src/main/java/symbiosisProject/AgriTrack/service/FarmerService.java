@@ -57,7 +57,7 @@ public class FarmerService {
 		return repo.getByName(name).orElse(null);
 	}
 	
-	public Farmer changePassword(String oldPassword,long id)
+	public Farmer changePassword(String oldPassword,Long id)
 	{
 		Farmer f = repo.findById(id).orElse(null);
 		if(f != null)
@@ -81,7 +81,7 @@ public class FarmerService {
 	
 	}
 	
-	public String delteById(long id)
+	public String delteById(Long id)
 	{
 	     repo.deleteById(id);
 	     return "deleted";

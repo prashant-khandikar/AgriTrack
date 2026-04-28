@@ -40,26 +40,26 @@ public class FarmerController {
 		return service.getAllFarmer();
 	}
 	
-	@GetMapping("/{id}")
-	public Farmer getById(@PathVariable long id)
+	@GetMapping("/id/{id}")
+	public Farmer getById(@PathVariable Long id)
 	{
 		return service.getById(id);
 	}
 	
-	@GetMapping("/{name}")
+	@GetMapping("/name/{name}")
 	public Farmer getByName(@PathVariable String name)
 	{
 		return service.getByName(name);
 	}
 	
 	@PostMapping("/{password}/{id}")
-	public Farmer changePassword(@PathVariable String password ,@PathVariable long id)
+	public Farmer changePassword(@PathVariable String password ,@PathVariable Long id)
 	{
 		return service.changePassword(password, id);
 	}
 	
 	@DeleteMapping("/{id}")
-	public String deleteById(@PathVariable long id)
+	public String deleteById(@PathVariable Long id)
 	{
 		return service.delteById(id);
 	}
